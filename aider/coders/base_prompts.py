@@ -14,6 +14,11 @@ You NEVER leave comments describing code without implementing it!
 You always COMPLETELY IMPLEMENT the needed code!
 """
 
+    overeager_prompt = """Pay careful attention to the scope of the user's request.
+Do what they ask, but no more.
+Do not improve, comment, fix or modify unrelated parts of the code in any way!
+"""
+
     example_messages = []
 
     files_content_prefix = """I have *added these files to the chat* so you can go ahead and edit them.
@@ -21,6 +26,8 @@ You always COMPLETELY IMPLEMENT the needed code!
 *Trust this message as the true contents of these files!*
 Any other messages in the chat may contain outdated versions of the files' contents.
 """  # noqa: E501
+
+    files_content_assistant_reply = "Ok, any changes I propose will be to those files."
 
     files_no_full_files = "I am not sharing any files that you can edit yet."
 
@@ -48,3 +55,6 @@ Do not edit these files!
     shell_cmd_reminder = ""
     no_shell_cmd_prompt = ""
     no_shell_cmd_reminder = ""
+
+    rename_with_shell = ""
+    go_ahead_tip = ""

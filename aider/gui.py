@@ -11,7 +11,7 @@ from aider.coders import Coder
 from aider.dump import dump  # noqa: F401
 from aider.io import InputOutput
 from aider.main import main as cli_main
-from aider.scrape import Scraper
+from aider.scrape import Scraper, has_playwright
 
 
 class CaptureIO(InputOutput):
@@ -160,7 +160,7 @@ class GUI:
 
             st.warning(
                 "This browser version of aider is experimental. Please share feedback in [GitHub"
-                " issues](https://github.com/paul-gauthier/aider/issues)."
+                " issues](https://github.com/Aider-AI/aider/issues)."
             )
 
     def do_settings_tab(self):
@@ -484,7 +484,7 @@ class GUI:
         url = self.web_content
 
         if not self.state.scraper:
-            self.scraper = Scraper(print_error=self.info)
+            self.scraper = Scraper(print_error=self.info, playwright_available=has_playwright())
 
         content = self.scraper.scrape(url) or ""
         if content.strip():
@@ -528,7 +528,7 @@ def gui_main():
         page_icon=urls.favicon,
         menu_items={
             "Get Help": urls.website,
-            "Report a bug": "https://github.com/paul-gauthier/aider/issues",
+            "Report a bug": "https://github.com/Aider-AI/aider/issues",
             "About": "# Aider\nAI pair programming in your browser.",
         },
     )
